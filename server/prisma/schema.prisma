@@ -51,3 +51,25 @@ enum Field {
     LAII
     LT
 }
+
+model Book {
+    id            String     @id @default(cuid())
+    title         String
+    author        String
+    description   String?
+    imageUrl      String?
+    categories    Category[] // many-to-many
+    publishedDate DateTime?
+    language      String?
+    isbn          String?    @unique
+    pageCount     Int?
+    publisher     String?
+    rating        Float?
+    createdAt     DateTime   @default(now())
+}
+
+model Category {
+    id    String @id @default(cuid())
+    name  String @unique
+    books Book[]
+}
