@@ -121,116 +121,109 @@ export default function ReportSubmissionForm() {
   };
 
   return (
-    <Card className="w-full">
-      <form onSubmit={handleSubmit}>
-        <CardHeader>
-          <CardTitle>Submit Your Report</CardTitle>
-          <CardDescription>
-            Upload your final year report and select a professor for validation.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {/* File Upload */}
-          <div className="space-y-2">
-            <Label htmlFor="report-file">Report PDF</Label>
-            <div className="grid w-full gap-2">
-              <div className="flex items-center justify-center w-full">
-                <label
-                  htmlFor="report-file"
-                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-md cursor-pointer bg-muted/40 hover:bg-muted/60 border-muted-foreground/25">
-                  <div className="flex flex-col items-center justify-center pt-5 pb-6 space-y-2">
-                    <FileUp className="w-8 h-8 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground">
-                      {file
-                        ? file.name
-                        : 'Drag and drop or click to upload your report'}
+    <Card className="w-full bg-muted/20">
+      <CardHeader>
+        <CardTitle>Validate Report</CardTitle>
+        <CardDescription>
+          Upload your final year report and select a professor for validation.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* File Upload */}
+        <div className="space-y-2">
+          <div className="grid w-full gap-2">
+            <div className="flex items-center justify-center w-full">
+              <label
+                htmlFor="report-file"
+                className="flex flex-col items-center justify-center w-full h-44 border-2 border-dashed rounded-md cursor-pointer bg-muted/40 hover:bg-muted/60 border-muted-foreground/25">
+                <div className="flex flex-col items-center justify-center pt-5 pb-6 space-y-2">
+                  <FileUp className="w-8 h-8 text-muted-foreground" />
+                  <p className="text-sm text-muted-foreground">
+                    {file
+                      ? file.name
+                      : 'Drag and drop or click to upload your report'}
+                  </p>
+                  {file && (
+                    <p className="text-xs text-muted-foreground">
+                      {(file.size / 1024 / 1024).toFixed(2)} MB
                     </p>
-                    {file && (
-                      <p className="text-xs text-muted-foreground">
-                        {(file.size / 1024 / 1024).toFixed(2)} MB
-                      </p>
-                    )}
-                  </div>
-                  <Input
-                    id="report-file"
-                    type="file"
-                    accept=".pdf"
-                    className="hidden"
-                    onChange={handleFileChange}
-                  />
-                </label>
-              </div>
+                  )}
+                </div>
+                <Input
+                  id="report-file"
+                  type="file"
+                  accept=".pdf"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+              </label>
             </div>
           </div>
+        </div>
 
-          {/* Class */}
-          <div className="space-y-2">
-            <Label htmlFor="class">Class</Label>
-            <Input
-              id="class"
-              placeholder="e.g. CS-2023, ENG-4A"
-              value={formData.class}
-              onChange={(e) =>
-                setFormData({...formData, class: e.target.value})
-              }
-            />
-          </div>
+        {/* Class */}
+        <div className="space-y-2">
+          <Label htmlFor="class">Class</Label>
+          <Input
+            id="class"
+            placeholder="e.g. CS-2023, ENG-4A"
+            value={formData.class}
+            onChange={(e) => setFormData({...formData, class: e.target.value})}
+          />
+        </div>
 
-          {/* Field of Study */}
-          <div className="space-y-2">
-            <Label htmlFor="field">Field of Study</Label>
-            <Select
-              value={formData.field}
-              onValueChange={(value) =>
-                setFormData({...formData, field: value})
-              }>
-              <SelectTrigger id="field">
-                <SelectValue placeholder="Select your field of study" />
-              </SelectTrigger>
-              <SelectContent>
-                {fields.map((field) => (
-                  <SelectItem key={field} value={field}>
-                    {field}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        {/* Field of Study */}
+        <div className="space-y-2">
+          <Label htmlFor="field">Field of Study</Label>
+          <Select
+            value={formData.field}
+            onValueChange={(value) => setFormData({...formData, field: value})}>
+            <SelectTrigger id="field">
+              <SelectValue placeholder="Select your field of study" />
+            </SelectTrigger>
+            <SelectContent>
+              {fields.map((field) => (
+                <SelectItem key={field} value={field}>
+                  {field}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-          {/* Professor Selection */}
-          <div className="space-y-2">
-            <Label htmlFor="professor">Professor</Label>
-            <Select
-              value={formData.professor}
-              onValueChange={(value) =>
-                setFormData({...formData, professor: value})
-              }>
-              <SelectTrigger id="professor">
-                <SelectValue placeholder="Select a professor for validation" />
-              </SelectTrigger>
-              <SelectContent>
-                {professors.map((professor) => (
-                  <SelectItem key={professor.id} value={professor.id}>
-                    {professor.name} ({professor.department})
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              'Submit Report'
-            )}
-          </Button>
-        </CardFooter>
-      </form>
+        {/* Professor Selection */}
+        <div className="space-y-2">
+          <Label htmlFor="professor">Professor</Label>
+          <Select
+            value={formData.professor}
+            onValueChange={(value) =>
+              setFormData({...formData, professor: value})
+            }>
+            <SelectTrigger id="professor">
+              <SelectValue placeholder="Select a professor for validation" />
+            </SelectTrigger>
+            <SelectContent>
+              {professors.map((professor) => (
+                <SelectItem key={professor.id} value={professor.id}>
+                  {professor.name} ({professor.department})
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              Submitting...
+            </>
+          ) : (
+            'Submit Report'
+          )}
+        </Button>
+      </CardFooter>
     </Card>
   );
 }

@@ -67,7 +67,7 @@ export function SearchFilters() {
             <SheetHeader>
               <SheetTitle>Filters</SheetTitle>
             </SheetHeader>
-            <div className="grid gap-6 py-4">
+            <div className="grid gap-6 py-4 px-4">
               <div className="space-y-2">
                 <h3 className="text-sm font-medium">Sort By</h3>
                 <Select defaultValue="relevance">

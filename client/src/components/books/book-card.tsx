@@ -74,7 +74,7 @@ export function BookCard({book, className}: BookCardProps) {
             size="sm"
             className="w-full cursor-pointer bg-primary hover:bg-primary/90 mt-auto">
             <BookOpen className="h-4 w-4 mr-2" />
-            Read Now
+            Borrow Now
           </Button>
         </div>
       </div>

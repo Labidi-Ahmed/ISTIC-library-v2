@@ -75,7 +75,7 @@ export default function SubmitReportPage() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <Card className="max-w-2xl mx-auto">
+      <Card className="max-w-xl mx-auto bg-muted/20">
         <CardHeader>
           <CardTitle className="text-2xl">Submit Final Year Report</CardTitle>
           <CardDescription>
@@ -88,12 +88,9 @@ export default function SubmitReportPage() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-4">
                 <div>
-                  <FormLabel className="block mb-2">
-                    Upload Report (PDF)
-                  </FormLabel>
                   <div
                     {...getRootProps()}
-                    className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
+                    className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer bg-muted/40 transition-colors ${
                       isDragActive
                         ? 'bg-primary/10 border-primary'
                         : 'hover:bg-muted/50'

@@ -35,7 +35,7 @@ export const booksData: Book[] = [
     description:
       'Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world.',
     coverImage:
-      'https://images-na.ssl-images-amazon.com/images/I/81S7+8xlE9L.jpg',
+      'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555447414i/44767458.jpg',
     genres: ['Science Fiction', 'Fantasy', 'Classic'],
     language: 'English',
     publicationDate: '1965-08-01',
@@ -48,7 +48,7 @@ export const booksData: Book[] = [
     description:
       "Alicia Berenson's life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house in one of London's most desirable areas.",
     coverImage:
-      'https://images-na.ssl-images-amazon.com/images/I/91lslnZ1a8L.jpg',
+      'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1668782119i/40097951.jpg',
     genres: ['Thriller', 'Mystery', 'Fiction'],
     language: 'English',
     publicationDate: '2019-02-05',
@@ -61,7 +61,7 @@ export const booksData: Book[] = [
     description:
       'A memoir about a young girl who, kept out of school, leaves her survivalist family and goes on to earn a PhD from Cambridge University.',
     coverImage:
-      'https://images-na.ssl-images-amazon.com/images/I/81WojUc4+ZL.jpg',
+      'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1506026635i/35133922.jpg',
     genres: ['Biography', 'Memoir', 'Non-Fiction'],
     language: 'English',
     publicationDate: '2018-02-20',
@@ -87,7 +87,7 @@ export const booksData: Book[] = [
     description:
       "For years, rumors of the 'Marsh Girl' have haunted Barkley Cove, a quiet town on the North Carolina coast. So in late 1969, when handsome Chase Andrews is found dead, the locals immediately suspect Kya Clark, the so-called Marsh Girl.",
     coverImage:
-      'https://images-na.ssl-images-amazon.com/images/I/81O1LFv5HbL.jpg',
+      'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1582135294i/36809135.jpg',
     genres: ['Fiction', 'Mystery', 'Literary Fiction'],
     language: 'English',
     publicationDate: '2018-08-14',
