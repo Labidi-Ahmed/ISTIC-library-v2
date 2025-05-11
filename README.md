@@ -48,7 +48,7 @@ NODE_ENV=dev
 ORIGIN=http://localhost:3000
 SERVER_URL=http://localhost:7000
 
-# Groq API key (must support image recognition, ideally Llama 4)
+# Groq API key (must support image recognition)
 GROQ=your_groq_api_key_here
 
 # Auth configuration - replace with your values
