@@ -19,12 +19,6 @@ export function AppSidebar() {
   // Reports navigation items array
   const reportsNavItems = [
     {
-      title: 'Publish Report',
-      icon: PlusCircleIcon,
-      url: '/app/publish',
-      tooltip: 'Publish a new report',
-    },
-    {
       title: 'Validate Report',
       icon: VerifiedIcon,
       url: '/app/validate',

@@ -27,7 +27,7 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 import {useUserStore} from '@/stores/userStore';
-import useLogout from '@/hooks/useLogout';
+import useLogout from '@/features/auth/hooks/useLogout';
 
 export function UserNav() {
   const {isMobile} = useSidebar();

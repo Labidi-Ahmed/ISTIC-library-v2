@@ -3,7 +3,7 @@ import {ThemeProvider} from '@/components/theme-provider';
 
 const ThemeWrapper = () => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-istic-theme">
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-istic-theme">
       <Outlet />
     </ThemeProvider>
   );

@@ -1,5 +1,5 @@
-import {BookList} from '@/components/books/book-list';
-import {SearchFilters} from '@/components/books/search-filters';
+import {BookList} from '@/features/books/components/book-list';
+import {SearchFilters} from '@/features/books/components/search-filters';
 import type {Book} from '@/types';
 
 export const booksData: Book[] = [

@@ -13,7 +13,7 @@ export default function AppLayout() {
           <AppSidebar />
 
           <SidebarInset className="">
-            <SidebarHeader sidebarVisible={false} />
+            <SidebarHeader />
             <Outlet />
           </SidebarInset>
         </SidebarProvider>

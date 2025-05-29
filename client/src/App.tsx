@@ -6,16 +6,15 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import PrivateRoutes from '@/components/auth/PrivateRoutes';
-import PublicRoutes from '@/components/auth/PublicRoutes';
+import PrivateRoutes from '@/features/auth/components/PrivateRoutes';
+import PublicRoutes from '@/features/auth/components/PublicRoutes';
 import NotFoundPage from './pages/NorFoundPage';
 import AppLayout from './layouts/AppLayout';
 import {Toaster} from './components/ui/sonner';
 
 import ThemeWrapper from './components/ThemeWrapper';
-import SubmitReportPage from './components/report-publish/report-form';
-import ReportSubmissionForm from './pages/report-validation/ValidateForm';
-import ELibraryPage from './pages/books/Book-page';
+import ReportSubmissionForm from './features/report-submition/components/ValidateForm';
+import ELibraryPage from './pages/Book-page';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +25,6 @@ const router = createBrowserRouter(
           <Route path="/app" element={<AppLayout />}>
             <Route path="books" element={<ELibraryPage />} />
 
-            <Route path="publish" element={<SubmitReportPage />} />
             <Route
               path="validate"
               element={

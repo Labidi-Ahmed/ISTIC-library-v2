@@ -13,7 +13,7 @@ import {SidebarMenuButton} from '@/components/ui/sidebar';
 import {Button} from '@/components/ui/button';
 import {useNavigate} from 'react-router-dom';
 import {useUserStore} from '@/stores/userStore';
-import useLogout from '@/hooks/useLogout';
+import useLogout from '@/features/auth/hooks/useLogout';
 
 export function UserMenu() {
   const navigate = useNavigate();
