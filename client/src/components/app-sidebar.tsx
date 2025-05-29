@@ -11,8 +11,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import {UserNav} from './auth/UserNav';
-import {Book, Files, Folder, PlusCircleIcon, VerifiedIcon} from 'lucide-react';
+import {UserNav} from '@/features/auth/components/UserNav';
+import {Book, Files, Folder, VerifiedIcon} from 'lucide-react';
 import {Link} from 'react-router-dom';
 
 export function AppSidebar() {

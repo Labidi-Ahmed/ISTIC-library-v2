@@ -32,16 +32,6 @@ export default function DocumentUploadPage() {
         </div>
 
         <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Document Submission
-            </CardTitle>
-            <CardDescription>
-              Please upload your PDF document and select the professor you want
-              to submit it to.
-            </CardDescription>
-          </CardHeader>
           <CardContent>
             <form className="space-y-6">
               {/* File Upload Section */}

@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
-import API_URL from '@/api/config';
+import API_URL from '@/config/api';
 import {User, useUserStore} from '@/stores/userStore';
 import {useEffect} from 'react';
 
@@ -32,7 +32,7 @@ const useAuth = () => {
       setUser(data.user);
       console.log(data.user);
     }
-  }, [data]);
+  }, [data, setUser]);
 
   return {
     isAuthenticated: data?.authenticated || false,

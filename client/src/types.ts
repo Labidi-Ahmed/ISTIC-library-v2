@@ -45,15 +45,3 @@ export const StreamStatus = {
   COMPLETED: 'completed',
   ERROR: 'error',
 } as const;
-
-export interface Book {
-  id: string;
-  title: string;
-  author: string;
-  description: string;
-  coverImage: string;
-  genres: string[];
-  language: string;
-  publicationDate: string;
-  format: string[];
-}

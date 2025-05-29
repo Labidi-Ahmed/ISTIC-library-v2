@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import type {Book} from '@/types';
-import {BookCard} from '@/components/books/book-card';
+import type {Book} from '@/features/books/types';
+import {BookCard} from '@/features/books/components/book-card';
 import {Button} from '@/components/ui/button';
 import {Grid, List} from 'lucide-react';
 

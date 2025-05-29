@@ -1,6 +1,6 @@
 import {Button} from '@/components/ui/button';
 import {Link} from 'react-router-dom';
-import API_URL from '@/api/config';
+import API_URL from '@/config/api';
 import {
   Card,
   CardContent,

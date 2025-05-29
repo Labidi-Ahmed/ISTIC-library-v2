@@ -1,4 +1,4 @@
-import type {Book} from '@/types';
+import type {Book} from '@/features/books/types';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
 import {Card, CardFooter} from '@/components/ui/card';

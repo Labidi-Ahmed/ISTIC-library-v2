@@ -1,6 +1,6 @@
 import {useMutation} from '@tanstack/react-query';
 import axios from 'axios';
-import API_URL from '@/api/config';
+import API_URL from '@/config/api';
 import {useUserStore} from '@/stores/userStore';
 import {useNavigate} from 'react-router-dom';
 
