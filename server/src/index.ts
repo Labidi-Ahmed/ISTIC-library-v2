@@ -5,7 +5,7 @@ import {CorsOptions} from 'cors';
 import cors from 'cors';
 import authRoutes from '@/routes/authRoutes';
 import cookieParser from 'cookie-parser';
-import reportsRouter from '@/routes/reportsRouter';
+import professorsRouter from '@/routes/professorsRouter';
 
 const corsOptions: CorsOptions = {
   origin: [
@@ -26,7 +26,7 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
-app.use('/api/reports', reportsRouter);
+app.use('/api/professors', professorsRouter);
 
 const PORT = process.env.PORT || 7000;
 
