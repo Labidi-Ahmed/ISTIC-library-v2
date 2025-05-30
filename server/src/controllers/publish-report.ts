@@ -1,11 +1,8 @@
 import {Request, Response} from 'express';
 import {PDFDocument} from 'pdf-lib';
 import {fromBuffer} from 'pdf2pic';
-import sharp from 'sharp';
 import ReportSchema from '@/zodSchemas/index';
-import {Console} from 'console';
-import path from 'path';
-import {writeFile} from 'fs/promises';
+
 import {checkSignature} from '@/services/checkSignature';
 import {uploadPdfToS3} from '@/lib/S3';
 

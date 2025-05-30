@@ -142,12 +142,11 @@ export const getProfessorSubmissions = async (req: Request, res: Response) => {
           },
           versions: {
             orderBy: {
-              versionNumber: 'desc',
+              createdAt: 'desc',
             },
             take: 1,
             select: {
               status: true,
-              versionNumber: true,
               createdAt: true,
             },
           },
