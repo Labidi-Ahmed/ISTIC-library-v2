@@ -1,6 +1,7 @@
 import {useMutation} from '@tanstack/react-query';
 import {toast} from 'sonner';
 import axios from 'axios';
+import API_URL from '@/config/api';
 
 interface SubmissionData {
   file: File;
@@ -13,8 +14,8 @@ const postSubmission = async (data: SubmissionData) => {
   formData.append('file', data.file);
   formData.append('message', data.message);
   formData.append('professorId', data.professorId);
-
-  const response = await axios.post('/api/submissions', formData, {
+  console.log('Submitting data:', data);
+  const response = await axios.post(`${API_URL}/submissions`, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
     withCredentials: true,
   });

@@ -45,15 +45,6 @@ export default function DocumentUploadPage() {
   return (
     <div className="py-8 px-4">
       <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Submit your report for validation
-          </h1>
-          <p className="text-gray-600">
-            Upload your PDF report and select a professor to submit to
-          </p>
-        </div>
-
         <Card>
           <CardContent className="p-6">
             <div className="space-y-6">
@@ -117,17 +108,21 @@ export default function DocumentUploadPage() {
                         professors.map((professor) => (
                           <div
                             key={professor.id}
-                            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                            className="flex items-center gap-4 px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
                             onClick={() => handleProfessorSelect(professor)}>
-                            <User className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                            <img
+                              src={professor.avatarUrl}
+                              alt="Professor Avatar"
+                              className="w-10 h-10 rounded-full object-cover"
+                            />
                             <div className="flex-1 min-w-0">
-                              <div className="font-medium text-gray-900">
-                                {professor.name}
+                              <div className="flex items-center justify-between">
+                                <span className="font-semibold text-gray-900">
+                                  {professor.username}
+                                </span>
+                                <User className="h-4 w-4 text-gray-400 flex-shrink-0" />
                               </div>
-                              <div className="text-sm text-gray-600">
-                                {professor.department}
-                              </div>
-                              <div className="text-xs text-gray-500">
+                              <div className="text-sm text-gray-500 truncate">
                                 {professor.email}
                               </div>
                             </div>
@@ -148,10 +143,10 @@ export default function DocumentUploadPage() {
                     <User className="h-4 w-4" />
                     <div>
                       <span className="font-medium">
-                        {selectedProfessor.name}
+                        {selectedProfessor.username}
                       </span>
                       <span className="text-blue-500 ml-2">
-                        ({selectedProfessor.department})
+                        ({selectedProfessor.email})
                       </span>
                     </div>
                   </div>

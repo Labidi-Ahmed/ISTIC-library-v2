@@ -5,17 +5,17 @@ import API_URL from '@/config/api';
 
 interface Professor {
   id: string;
-  name: string;
-  department: string;
+  username: string;
   email: string;
+  avatarUrl?: string;
 }
 
 const searchProfessorsAPI = async (query: string): Promise<Professor[]> => {
   const response = await axios.get(
-    `${API_URL}/professors/search?q=${encodeURIComponent(query)}`,
+    `${API_URL}/professors?search=${encodeURIComponent(query)}`,
     {withCredentials: true}
   );
-  return response.data;
+  return response.data.data as Professor[];
 };
 
 const useProfessorSearch = (
@@ -46,7 +46,7 @@ const useProfessorSearch = (
 
   const handleProfessorSelect = (professor: Professor) => {
     setSelectedProfessor(professor);
-    setSearchQuery(professor.name);
+    setSearchQuery(professor.username);
     setShowDropdown(false);
   };
 
