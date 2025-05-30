@@ -1,8 +1,7 @@
 import express from 'express';
-import {searchBooks} from '../controllers/bookController';
-
+import {getAllProfessors} from '../controllers/professorController';
 const router = express.Router();
 
-router.get('/search', searchBooks);
+router.get('/', getAllProfessors);
 
 export default router;

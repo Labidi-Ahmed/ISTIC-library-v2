@@ -13,11 +13,18 @@ model User {
     username  String
     email     String   @unique
     createdAt DateTime @default(now())
+    role      Role     @default(STUDENT)
 
     Session                Session[]
     submissionsAsStudent   Submission[] @relation("StudentSubmissions")
     submissionsAsProfessor Submission[] @relation("ProfessorSubmissions")
     Submission             Submission[]
+}
+
+enum Role {
+    STUDENT
+    PROFESSOR
+    ADMIN
 }
 
 model Submission {

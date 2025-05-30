@@ -1,6 +1,6 @@
 // src/controllers/professorController.ts
 import {Request, Response} from 'express';
-import {PrismaClient, Status} from '@prisma/client';
+import {PrismaClient, Status, Role} from '@prisma/client';
 import {prisma} from '@/lib/prisma';
 
 interface Pagination {
@@ -19,31 +19,47 @@ export const getAllProfessors = async (req: Request, res: Response) => {
   try {
     const {offset = 0, limit = 10, search} = req.query as unknown as Pagination;
 
-    const where = search
-      ? {
-          OR: [
-            {username: {contains: search, mode: 'insensitive'}},
-            {email: {contains: search, mode: 'insensitive'}},
-          ],
-        }
-      : {};
+    const searchTerm = typeof search === 'string' ? search.trim() : '';
+
+    if (!searchTerm) {
+      res.status(400).json({
+        error: 'Search term is required and must be at least 2 characters long',
+      });
+      return;
+    }
+
+    const where = {
+      role: Role.PROFESSOR,
+      OR: [
+        {
+          username: {
+            contains: searchTerm,
+          },
+        },
+        {
+          email: {
+            contains: searchTerm,
+          },
+        },
+      ],
+    };
+
+    // Debugging output
+    console.log('Search query:', searchTerm);
+    console.log('Prisma where clause:', JSON.stringify(where, null, 2));
 
     const [professors, total] = await Promise.all([
       prisma.user.findMany({
         where,
-        skip: offset,
-        take: limit,
+        skip: Number(offset),
+        take: Number(limit),
         select: {
           id: true,
           username: true,
           email: true,
           avatarUrl: true,
           createdAt: true,
-          _count: {
-            select: {
-              submissionsAsProfessor: true,
-            },
-          },
+          role: true,
         },
         orderBy: {
           createdAt: 'desc',
@@ -51,6 +67,26 @@ export const getAllProfessors = async (req: Request, res: Response) => {
       }),
       prisma.user.count({where}),
     ]);
+
+    // Debugging output
+    console.log('Returned professors:', professors);
+    console.log('Total found:', total);
+
+    // If no results found, return appropriate message
+    if (total === 0) {
+      res.json({
+        data: [],
+        meta: {
+          total: 0,
+          offset: Number(offset),
+          limit: Number(limit),
+          currentPage: 1,
+          totalPages: 0,
+          message: `No professors found matching "${searchTerm}"`,
+        },
+      });
+      return;
+    }
 
     res.json({
       data: professors,
@@ -67,7 +103,6 @@ export const getAllProfessors = async (req: Request, res: Response) => {
     res.status(500).json({error: 'Internal server error'});
   }
 };
-
 export const getProfessorSubmissions = async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
