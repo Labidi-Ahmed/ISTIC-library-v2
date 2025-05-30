@@ -45,7 +45,6 @@ model Submission {
 model Version {
     id               String   @id @default(cuid())
     submissionId     String
-    versionNumber    Int
     filePath         String
     studentMessage   String? // description from student
     professorMessage String? // feedback from professor

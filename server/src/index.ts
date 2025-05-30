@@ -5,8 +5,8 @@ import {CorsOptions} from 'cors';
 import cors from 'cors';
 import authRoutes from '@/routes/authRoutes';
 import cookieParser from 'cookie-parser';
-import professorsRouter from '@/routes/professorsRouter';
-
+import professorsRoutes from '@/routes/professorsRoutes';
+import submissionsRoutes from '@/submission/routes';
 const corsOptions: CorsOptions = {
   origin: [
     'http://localhost:3000',
@@ -26,7 +26,8 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
-app.use('/api/professors', professorsRouter);
+app.use('/api/professors', professorsRoutes);
+app.use('/api/submissions', submissionsRoutes);
 
 const PORT = process.env.PORT || 7000;
 

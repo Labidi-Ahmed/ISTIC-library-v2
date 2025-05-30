@@ -7,7 +7,7 @@ import {Console} from 'console';
 import path from 'path';
 import {writeFile} from 'fs/promises';
 import {checkSignature} from '@/services/checkSignature';
-import {uploadPdfToS3} from '@/services/S3';
+import {uploadPdfToS3} from '@/lib/S3';
 
 const convertPdfPage2image = async (buffer: Buffer) => {
   const pdfBuffer = buffer;

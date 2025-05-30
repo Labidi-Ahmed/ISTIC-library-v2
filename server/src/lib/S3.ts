@@ -1,7 +1,5 @@
 import {S3Client, PutObjectCommand} from '@aws-sdk/client-s3';
-import fs from 'fs';
 
-// AWS S3 configuration
 if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
   throw new Error('AWS credentials are not configured');
 }
