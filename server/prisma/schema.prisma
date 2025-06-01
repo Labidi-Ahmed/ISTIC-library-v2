@@ -16,9 +16,8 @@ model User {
     role      Role     @default(STUDENT)
 
     Session                Session[]
-    submissionsAsStudent   Submission[] @relation("StudentSubmissions")
+    submissionAsStudent    Submission?  @relation("StudentSubmissions")
     submissionsAsProfessor Submission[] @relation("ProfessorSubmissions")
-    Submission             Submission[]
 }
 
 enum Role {
@@ -29,7 +28,7 @@ enum Role {
 
 model Submission {
     id          String   @id @default(cuid())
-    studentId   String
+    studentId   String   @unique
     professorId String
     title       String
     createdAt   DateTime @default(now())
@@ -38,8 +37,6 @@ model Submission {
     student   User      @relation("StudentSubmissions", fields: [studentId], references: [id])
     professor User      @relation("ProfessorSubmissions", fields: [professorId], references: [id])
     versions  Version[]
-    User      User?     @relation(fields: [userId], references: [id])
-    userId    String?
 }
 
 model Version {
