@@ -1,9 +1,6 @@
 import {SidebarTrigger} from '@/components/ui/sidebar';
 import {Tooltip, TooltipContent, TooltipTrigger} from './ui/tooltip';
 
-import {PanelLeftIcon} from 'lucide-react';
-
-import {cn} from '@/lib/utils';
 import {Badge} from './ui/badge';
 export default function SidebarHeader() {
   return (

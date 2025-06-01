@@ -19,6 +19,12 @@ export function AppSidebar() {
   // Reports navigation items array
   const reportsNavItems = [
     {
+      title: 'My Report',
+      icon: Files,
+      url: '/app/submissions',
+      tooltip: 'View my submitted report',
+    },
+    {
       title: 'Validate Report',
       icon: VerifiedIcon,
       url: '/app/validate',
@@ -58,8 +64,8 @@ export function AppSidebar() {
                 asChild
                 className="data-[slot=sidebar-menu-button]:!p-1.5">
                 <a href="#">
-                  <span className="text-base font-semibold font-mono">
-                    Istic Library
+                  <span className=" text-lg font-semibold">
+                    Student Dashboard
                   </span>
                 </a>
               </SidebarMenuButton>
@@ -88,7 +94,7 @@ export function AppSidebar() {
           </SidebarGroup>
 
           {/* Discover Section */}
-          <SidebarGroup className="">
+          {/* <SidebarGroup className="">
             <SidebarGroupLabel className="text-muted-foreground">
               Discover
             </SidebarGroupLabel>
@@ -107,7 +113,7 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>
-          </SidebarGroup>
+          </SidebarGroup> */}
         </SidebarContent>
 
         <SidebarFooter className="">
