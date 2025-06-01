@@ -1,7 +1,8 @@
 import {useMutation} from '@tanstack/react-query';
 import {toast} from 'sonner';
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
 import API_URL from '@/config/api';
+import {useNavigate} from 'react-router-dom';
 
 interface SubmissionData {
   file: File;
@@ -24,14 +25,21 @@ const postSubmission = async (data: SubmissionData) => {
 };
 
 const useSubmissionMutation = () => {
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: postSubmission,
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast.success('Submission sent successfully!');
+      console.log('Submission response:', data);
+      navigate(`/app/submissions/${data.submission.id}`);
     },
-    onError: (error) => {
+    onError: (error: AxiosError<{message: string}>) => {
       console.error('Submission error:', error);
-      toast.error('Error sending submission. Please try again.');
+      if (error.response?.status === 400) {
+        toast.error(error.response.data.message || 'Bad request');
+      } else {
+        toast.error('Error sending submission. Please try again.');
+      }
     },
   });
 };
