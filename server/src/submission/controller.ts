@@ -19,6 +19,7 @@ export const createSubmission = async (req: Request, res: Response) => {
     }
 
     const {professorId, message} = req.body;
+
     if (!professorId) {
       res.status(400).json({
         success: false,
@@ -28,13 +29,26 @@ export const createSubmission = async (req: Request, res: Response) => {
       return;
     }
 
+    const existingSubmission = await prisma.submission.findUnique({
+      where: {
+        studentId: (req.user as User).id,
+      },
+    });
+
+    if (existingSubmission) {
+      res.status(400).json({
+        success: false,
+        message: 'You have already submitted a report.',
+      });
+      return;
+    }
+
     const pdfBuffer = req.file.buffer;
     const fileName = `${(req.user as User).username}-${Date.now()}.pdf`;
     const pdfUrl = await uploadPdfToS3(pdfBuffer, fileName);
 
     const createdSubmission = await prisma.submission.create({
       data: {
-        userId: (req.user as User).id,
         professorId,
         studentId: (req.user as User).id,
         title: (req.user as User).username + ' report submission',
