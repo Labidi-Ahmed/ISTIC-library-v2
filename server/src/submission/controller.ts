@@ -79,3 +79,44 @@ export const createSubmission = async (req: Request, res: Response) => {
     return;
   }
 };
+
+export const getSubmission = async (req: Request, res: Response) => {
+  try {
+    const studentId = (req.user as User).id;
+
+    if (!studentId) {
+      res.status(400).json({
+        success: false,
+        message: 'Student  ID is required',
+      });
+      return;
+    }
+
+    const submission = await prisma.submission.findUnique({
+      where: {studentId},
+      include: {
+        versions: true,
+        professor: true,
+        student: true,
+      },
+    });
+
+    if (!submission) {
+      res.status(404).json({
+        success: false,
+        message: 'Submission not found',
+      });
+      return;
+    }
+
+    res.status(200).json({
+      submission,
+    });
+  } catch (error) {
+    console.error('Error fetching submission:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch submission',
+    });
+  }
+};
