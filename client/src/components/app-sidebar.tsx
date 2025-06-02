@@ -21,7 +21,7 @@ export function AppSidebar() {
     {
       title: 'My Report',
       icon: Files,
-      url: '/app/submissions',
+      url: '/app/submission',
       tooltip: 'View my submitted report',
     },
     {

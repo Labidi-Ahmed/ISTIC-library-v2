@@ -15,6 +15,7 @@ import {Toaster} from './components/ui/sonner';
 import ThemeWrapper from './components/ThemeWrapper';
 import ReportSubmissionForm from './features/report-submition/components/ValidateForm';
 import ELibraryPage from './pages/Book-page';
+import SubmissionPage from './pages/SubmissionPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,8 @@ const router = createBrowserRouter(
                 </div>
               }
             />
+
+            <Route path="submission" element={<SubmissionPage />} />
           </Route>
         </Route>
         <Route element={<PublicRoutes />}>
